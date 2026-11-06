@@ -69,6 +69,9 @@ static int process(struct zmk_behavior_binding *binding, struct zmk_behavior_bin
     data->remainder[sensor][event.layer] -= (int64_t)wheel * binding->param1;
 
     if (wheel != 0) {
+        if (event.layer == 0 || event.layer == 1) {
+            wheel = -wheel;
+        }
         input_report_rel(dev, cfg->input_code, wheel, true, K_FOREVER);
     }
     return ZMK_BEHAVIOR_OPAQUE;
