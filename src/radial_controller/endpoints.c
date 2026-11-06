@@ -9,7 +9,7 @@
 #include <zmk/hires_dial/radial_controller.h>
 
 int zmk_hires_dial_radial_controller_endpoints_send(void) {
-    struct zmk_endpoint_instance endpoint = zmk_endpoints_selected();
+    struct zmk_endpoint_instance endpoint = zmk_endpoint_get_selected();
 
     switch (endpoint.transport) {
 #if IS_ENABLED(CONFIG_ZMK_USB)
